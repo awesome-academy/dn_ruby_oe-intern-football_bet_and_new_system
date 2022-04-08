@@ -27,6 +27,24 @@ vi:
       create:
         success: "Tạo thành công"
         fails: "Tạo thất bại"
+  devise:
+    failure:
+      already_authenticated: "Bạn đã đăng nhập rồi."
+      invalid: "%{authentication_keys} hoặc mật khẩu của bạn bị sai."
+      locked: "Tài khoản của bạn đã bị khóa."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "%{authentication_keys} hoặc mật khẩu của bạn không hợp lệ."
+      timeout: "Phiên đăng nhập của bạn đã hết hạn, vui lòng đăng nhập để tiếp tục."
+      unauthenticated: "Bạn cần đăng nhập để tiếp tục."
+      unconfirmed: "Bạn cần xác minh tài khoản để tiếp tục."
+    registrations:
+      signed_up: "Chúc mừng, Bạn đã đăng ký thành công."
+      updated: "Bạn đã cập nhật thành công."
+      updated_but_not_signed_in: "Bạn đã cập nhật thành công, NHưng sau khi mật khẩu của bạn thay đổi, Bạn cần đăng nhập lại."
+    sessions:
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
+      already_signed_out: "Đăng xuất thành công."
 
   base:
     request_login: "Vui lòng đăng nhập trước"
@@ -131,12 +149,6 @@ vi:
       football_bet_book: "Sách Cá cược bóng đá"
     about:
       about: "Giới thiệu"
-  sessions:
-    new:
-      remember_me: "Hãy nhớ tôi trên máy tính này!"
-      log_in: "Đăng nhập"
-      new_user: "Người dùng mới?"
-      intr_signup: "Đăng ký ngay!"
   users:
     show:
       account_balance: "Số dư tài khoản: "
