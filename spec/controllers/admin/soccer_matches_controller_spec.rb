@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe Admin::SoccerMatchesController, type: :controller do
   describe "GET #index" do
@@ -8,7 +7,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
     let!(:currency_2){user.currencies.create(amount: 100, currency_type_id: :lose)}
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
         get :index
       end
 
@@ -33,7 +32,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
     let!(:soccer_match) { SoccerMatch.new }
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
         get :new
       end
 
@@ -52,7 +51,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
     let!(:soccer_match) { create(:soccer_match) }
     context "when user logged in" do
       before :each do
-        log_in user
+        sign_in user
         get :edit, params: { id: soccer_match.id}
       end
 
@@ -73,7 +72,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
       let!(:user_bet_1){user.user_bets.create(amount: 70, bet_id: bet_1.id, result_bet: 0)}
       let!(:user_bet_2){user.user_bets.create(amount: 100, bet_id: bet_2.id, result_bet: 1)}
       before do
-        log_in user
+        sign_in user
         get :show, params: { id: soccer_match.id }
       end
 
@@ -101,7 +100,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
     context "when user logged in" do
       let!(:soccer_match) { create(:soccer_match) }
       before do
-        log_in user
+        sign_in user
         post :create, params: { soccer_match: {home_id: 1, team_id: 2,
                                                time: Time.now, tournament_id: 1}}
       end
@@ -139,7 +138,7 @@ RSpec.describe Admin::SoccerMatchesController, type: :controller do
     context "when user logged in" do
       let!(:soccer_match) { create(:soccer_match) }
       before do
-        log_in user
+        sign_in user
         post :update, params: { id: soccer_match.id, soccer_match: {home_id: 1, team_id: 2,
                                                                     time: Time.now, tournament_id: 1} }
       end
