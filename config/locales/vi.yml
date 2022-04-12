@@ -81,6 +81,8 @@ vi:
       account_balance: "Số dư tài khoản: "
       history_balance: "Lịch sử số dư: "
       history_currencies: "Lịch sử  Ví tiền"
+      search_history: "Lịch sử giao dịch"
+      btn_search: "Tìm kiếm"
     new:
       title: "Nạp/Rút tiền"
       account_balance: "Số dư tài khoản: "
@@ -140,7 +142,8 @@ vi:
       sign_up: "Đăng kí ngay!"
       intro_home1: "Đây là trang chủ của"
       intro_home2: "ứng dụng Cá cược bóng đá."
-      soccer_matches: "Danh sách trận đấu"
+      soccer_match: "Tìm kiếm trận đấu"
+      btn_search: "Tìm kiếm"
     help:
       help: "Hỗ trợ"
       intro_help1: "Nhận trợ giúp về Hướng dẫn Cá cược bóng đá tại "
