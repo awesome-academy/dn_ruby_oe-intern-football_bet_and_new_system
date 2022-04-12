@@ -6,8 +6,8 @@ class CurrenciesController < ApplicationController
   authorize_resource
 
   def index
-    moneys = current_user.currencies.search_by_type(params[:type]).newest
-    @pagy, @currencies = pagy moneys, items: Settings.digits.digit_6
+    @q = current_user.currencies.ransack(params[:q])
+    @pagy, @currencies = pagy @q.result.newest
   end
 
   def new

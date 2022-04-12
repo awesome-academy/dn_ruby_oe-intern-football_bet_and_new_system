@@ -7,7 +7,14 @@
   <%= t ".intro_home2" %>
   </h2>
 </div>
-
+<div class="mt-3" style="margin-left: 35%">
+  <%= search_form_for @q, class: "input-group", url: root_path do |f| %>
+    <%= f.search_field :teams_cont, class: "form-control-lg", placeholder: "Search soccer match"%>
+    <div class="input-group-append">
+      <%= f.submit :search, class: "btn btn-lg btn-outline-secondary" %>
+    </div>
+  <% end %>
+</div>
 <div class="text-center mt-5">
   <span class="text-center"> <%= t ".soccer_matches" %> </span>
 </div>
