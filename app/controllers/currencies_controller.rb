@@ -3,6 +3,7 @@ class CurrenciesController < ApplicationController
 
   before_action :authenticate_user!, only: %i(index new create)
   before_action :check_type, :check_amount_bet, only: :create
+  authorize_resource
 
   def index
     moneys = current_user.currencies.search_by_type(params[:type]).newest
