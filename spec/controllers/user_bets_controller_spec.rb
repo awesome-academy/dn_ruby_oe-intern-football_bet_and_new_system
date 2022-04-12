@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe UserBetsController, type: :controller do
   describe "GET #new" do
@@ -7,7 +6,7 @@ RSpec.describe UserBetsController, type: :controller do
     let!(:bet) { create(:bet) }
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
       end
 
       context "when has bet" do
@@ -31,8 +30,7 @@ RSpec.describe UserBetsController, type: :controller do
       before :each do
         get :new, params: { id: bet.id }
       end
-      it_behaves_like "flash danger message", "notification.log_in.request"
-      it_behaves_like "redirect to path", "login_path"
+      it_behaves_like "redirect to path", "new_user_session_path"
     end
   end
 
@@ -43,7 +41,7 @@ RSpec.describe UserBetsController, type: :controller do
 
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
       end
 
       context "money bet valid" do
@@ -98,8 +96,7 @@ RSpec.describe UserBetsController, type: :controller do
         post :create, params: {id: bet.id, user_bet: {amount: 100}}
       end
 
-      it_behaves_like "flash danger message", "notification.log_in.request"
-      it_behaves_like "redirect to path", "login_path"
+      it_behaves_like "redirect to path", "new_user_session_path"
     end
   end
 
@@ -109,7 +106,7 @@ RSpec.describe UserBetsController, type: :controller do
 
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
       end
 
       it "check user_bets" do
@@ -123,8 +120,7 @@ RSpec.describe UserBetsController, type: :controller do
         get :index
       end
 
-      it_behaves_like "flash danger message", "notification.log_in.request"
-      it_behaves_like "redirect to path", "login_path"
+      it_behaves_like "redirect to path", "new_user_session_path"
     end
   end
 end

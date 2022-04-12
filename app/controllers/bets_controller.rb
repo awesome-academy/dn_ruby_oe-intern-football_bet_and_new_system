@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
-  before_action :logged_in_user, :load_match, only: :index
+  before_action :authenticate_user!, :load_match, only: :index
 
   def index
     match_bets = @match.bets

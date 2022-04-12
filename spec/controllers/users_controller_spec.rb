@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe UsersController, type: :controller do
   describe "GET #show" do
@@ -7,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
 
     context "when user logged in" do
       before do
-        log_in user
+        sign_in user
         get :show, params: { id: user.id }
       end
       it "render show template" do
@@ -16,10 +15,10 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "when user not logged in" do
-      it "redirect to login template" do
+      before do
         get :show, params: { id: user.id }
-        expect(response).to redirect_to login_path
       end
+      it_behaves_like "redirect to path", "new_user_session_path"
     end
   end
 end

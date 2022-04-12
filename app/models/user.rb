@@ -10,16 +10,7 @@ class User < ApplicationRecord
   has_many :newses, dependent: :nullify
   has_many :comments, dependent: :destroy
 
-  attr_accessor :remember_token
   before_save :downcase_email
-
-  validates :name, presence: true
-  validates :email, presence: true,
-            length: {maximum: Settings.user.email.max_length},
-            format: {with: Settings.user.email.VALID_EMAIL_REGEX.freeze}
-  validates :password,
-            length: {in: Settings.digits.digit_6..Settings.digits.digit_21},
-            allow_nil: true
 
   private
 
