@@ -1,5 +1,6 @@
 class BetsController < ApplicationController
   before_action :authenticate_user!, :load_match, only: :index
+  authorize_resource
 
   def index
     match_bets = @match.bets

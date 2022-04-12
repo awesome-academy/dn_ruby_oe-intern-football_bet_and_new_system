@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     resources :bets, only: :index do
       member do
-        resources :user_bets, only: %i(new create)
+        resources :user_bets, only: %i(new create destroy)
       end
     end
     get "/user_bets", to: "user_bets#index"

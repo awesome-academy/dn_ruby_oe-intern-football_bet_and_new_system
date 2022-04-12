@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-3">
       <%= link_to t(".update"), "#" %>|
-      <%= link_to t(".delete"), "#" %>
+      <%= link_to t(".delete"), user_bet_path(user_bet.id), method: :delete %>
     </div>
   </div>
 </li>
