@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe BetsController, type: :controller do
   describe "GET index" do
@@ -7,7 +6,7 @@ RSpec.describe BetsController, type: :controller do
     let!(:match){FactoryBot.create :soccer_match}
     context "when logged in" do
       before do
-        log_in user
+        sign_in user
         get :index, params: {match_id: match.id}
       end
 
@@ -22,7 +21,7 @@ RSpec.describe BetsController, type: :controller do
 
     context "when match not found" do
       before do
-        log_in user
+        sign_in user
         get :index, params: {match_id: -1}
       end
 
@@ -41,7 +40,7 @@ RSpec.describe BetsController, type: :controller do
       end
 
       it "render index" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end

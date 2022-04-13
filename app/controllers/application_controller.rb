@@ -1,29 +1,44 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
   include Pagy::Backend
 
+  before_action :store_user_location!, if: :storable_location?
   before_action :set_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def self.default_url_options options = {}
+    options.merge(locale: I18n.locale)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json{head :forbidden}
+      format.html{redirect_to root_path, alert: exception.message}
+    end
+  end
 
   private
 
-  def logged_in_user
-    action_if_not_logged_in unless logged_in?
-  end
-
-  def action_if_not_logged_in
-    store_location
-    flash[:danger] = t "notification.log_in.request"
-    redirect_to login_path
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.permit(:name, :email, :password)
+    end
+    devise_parameter_sanitizer.permit(:account_update) do |u|
+      u.permit(:name, :email, :password, :current_password)
+    end
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
     locale = params[:locale].to_s.strip.to_sym
     d_local = I18n.default_locale
     I18n.locale = I18n.available_locales.include?(locale) ? locale : d_local
   end
 
-  def default_url_options
-    {locale: I18n.locale}
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? &&
+      !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 end

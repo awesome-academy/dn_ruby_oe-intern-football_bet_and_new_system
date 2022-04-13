@@ -1,17 +1,16 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe CurrenciesController, type: :controller do
   let!(:user){FactoryBot.create :user}
   describe "GET index" do
     context "success when logged in" do
       before do
-        log_in user
+        sign_in user
         get :index
       end
 
       it "set currencies" do
-        currencies = current_user.currencies.search_by_type(nil)
+        currencies = user.currencies.search_by_type(nil)
         expect(assigns(:currencies)).to eq currencies
       end
       it_behaves_like "render action template", "index"
@@ -23,7 +22,7 @@ RSpec.describe CurrenciesController, type: :controller do
   describe "GET new" do
     context "success when logged in" do
       before do
-        log_in user
+        sign_in user
         get :new
       end
 
@@ -43,7 +42,7 @@ RSpec.describe CurrenciesController, type: :controller do
     context "success with valid params" do
       let!(:count){Currency.count}
       before do
-        log_in user
+        sign_in user
         post :create, params: valid_params
       end
 
@@ -58,7 +57,7 @@ RSpec.describe CurrenciesController, type: :controller do
 
     context "fails when save fails " do
       before do
-        log_in user
+        sign_in user
         allow_any_instance_of(Currency).to receive(:save).and_return(false)
         post :create, params: valid_params
       end
@@ -69,7 +68,7 @@ RSpec.describe CurrenciesController, type: :controller do
 
     context "fails when type invalid" do
       before do
-        log_in user
+        sign_in user
         post :create, params: type_invalid_params
       end
 
@@ -79,7 +78,7 @@ RSpec.describe CurrenciesController, type: :controller do
 
     context "fails when withdrawal invalid amount" do
       before do
-        log_in user
+        sign_in user
         post :create, params: amount_invalid_params
       end
 

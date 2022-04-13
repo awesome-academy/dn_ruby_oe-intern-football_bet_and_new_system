@@ -1,8 +1,7 @@
 RSpec.shared_examples "when not logged in" do |action|
   before {get action}
 
-  it_behaves_like "flash danger message", "notification.log_in.request"
-  it_behaves_like "redirect to path", "login_path"
+  it_behaves_like "redirect to path", "new_user_session_path"
 end
 
 RSpec.shared_examples "when not logged in admin" do
@@ -11,7 +10,6 @@ RSpec.shared_examples "when not logged in admin" do
   it_behaves_like "flash danger message", "base.request_login"
   it_behaves_like "redirect to path", "root_path"
 end
-
 
 RSpec.shared_examples "when admin not logged in" do |action|
   before {get action}
@@ -23,7 +21,7 @@ end
 RSpec.shared_examples "when logged in but not admin" do |action|
   let!(:client_user) { create(:client_user)}
   before do
-    log_in client_user
+    user_session user
     get action
   end
 

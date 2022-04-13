@@ -27,6 +27,24 @@ vi:
       create:
         success: "Tạo thành công"
         fails: "Tạo thất bại"
+  devise:
+    failure:
+      already_authenticated: "Bạn đã đăng nhập rồi."
+      invalid: "%{authentication_keys} hoặc mật khẩu của bạn bị sai."
+      locked: "Tài khoản của bạn đã bị khóa."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "%{authentication_keys} hoặc mật khẩu của bạn không hợp lệ."
+      timeout: "Phiên đăng nhập của bạn đã hết hạn, vui lòng đăng nhập để tiếp tục."
+      unauthenticated: "Bạn cần đăng nhập để tiếp tục."
+      unconfirmed: "Bạn cần xác minh tài khoản để tiếp tục."
+    registrations:
+      signed_up: "Chúc mừng, Bạn đã đăng ký thành công."
+      updated: "Bạn đã cập nhật thành công."
+      updated_but_not_signed_in: "Bạn đã cập nhật thành công, NHưng sau khi mật khẩu của bạn thay đổi, Bạn cần đăng nhập lại."
+    sessions:
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
+      already_signed_out: "Đăng xuất thành công."
 
   base:
     request_login: "Vui lòng đăng nhập trước"
@@ -63,6 +81,8 @@ vi:
       account_balance: "Số dư tài khoản: "
       history_balance: "Lịch sử số dư: "
       history_currencies: "Lịch sử  Ví tiền"
+      search_history: "Lịch sử giao dịch"
+      btn_search: "Tìm kiếm"
     new:
       title: "Nạp/Rút tiền"
       account_balance: "Số dư tài khoản: "
@@ -122,7 +142,8 @@ vi:
       sign_up: "Đăng kí ngay!"
       intro_home1: "Đây là trang chủ của"
       intro_home2: "ứng dụng Cá cược bóng đá."
-      soccer_matches: "Danh sách trận đấu"
+      soccer_match: "Tìm kiếm trận đấu"
+      btn_search: "Tìm kiếm"
     help:
       help: "Hỗ trợ"
       intro_help1: "Nhận trợ giúp về Hướng dẫn Cá cược bóng đá tại "
@@ -131,12 +152,6 @@ vi:
       football_bet_book: "Sách Cá cược bóng đá"
     about:
       about: "Giới thiệu"
-  sessions:
-    new:
-      remember_me: "Hãy nhớ tôi trên máy tính này!"
-      log_in: "Đăng nhập"
-      new_user: "Người dùng mới?"
-      intr_signup: "Đăng ký ngay!"
   users:
     show:
       account_balance: "Số dư tài khoản: "

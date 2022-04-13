@@ -8,4 +8,8 @@ class Currency < ApplicationRecord
                                                     only_integer: true}
   scope :newest, ->{order created_at: :desc}
   scope :search_by_type, ->(type){where currency_type_id: type if type.present?}
+
+  ransacker :created_at, type: :date do
+    Arel.sql("date(created_at)")
+  end
 end

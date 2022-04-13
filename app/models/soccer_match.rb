@@ -18,6 +18,8 @@ class SoccerMatch < ApplicationRecord
 
   validate :valid_match_time?
 
+  ransack_alias :teams, :home_team_name_or_guest_team_name
+
   private
 
   def valid_match_time?
