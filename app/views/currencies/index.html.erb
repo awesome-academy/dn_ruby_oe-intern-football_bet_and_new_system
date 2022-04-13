@@ -1,4 +1,13 @@
 <% provide :title, t(".history_balance") %>
+<div class="mb-5" style="margin-left: 60%">
+  <%= search_form_for @q, class: "input-group", url: currencies_path do |f| %>
+    <%= f.search_field :created_at_eq, class: "form-control-lg", placeholder: "Search history" %>
+    <div class="input-group-append">
+      <%= f.submit :search, class: "btn btn-lg btn-outline-secondary" %>
+    </div>
+  <% end %>
+</div>
+
 <div class="row">
   <aside class="col-md-4">
     <%= render "type_currencies" %>
