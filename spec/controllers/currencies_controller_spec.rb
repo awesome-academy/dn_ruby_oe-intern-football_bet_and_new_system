@@ -9,6 +9,17 @@ RSpec.describe CurrenciesController, type: :controller do
         get :index
       end
 
+      context "finds specific soccer match" do
+        let!(:currency1) {user.currencies}
+        before { get :index, params:{created_at_eq: "2022-04-08"}}
+        it "should find soccer match by team name" do
+          expect(assigns(:currencies)).to eq currency1
+        end
+
+        it { should respond_with(:success) }
+        it { should render_template(:index) }
+      end
+
       it "set currencies" do
         currencies = user.currencies.search_by_type(nil)
         expect(assigns(:currencies)).to eq currencies

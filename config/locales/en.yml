@@ -125,6 +125,8 @@ en:
       account_balance: "Account balance: "
       history_balance: "History balance: "
       history_currencies: "History currencies "
+      transaction_history: "Transaction history"
+      btn_search: "Search"
     new:
       title: "Payment/Withdrawal"
       account_balance: "Account balance: "
@@ -184,7 +186,8 @@ en:
       sign_up: "Sign up now!"
       intro_home1: "This is the home page for the"
       intro_home2: "football bet application."
-      soccer_matches: "Soccer Matches"
+      soccer_match: "Search soccer match"
+      btn_search: "Search"
     help:
       help: "Help"
       intro_help1: "Get help on the Football Bet at the "
